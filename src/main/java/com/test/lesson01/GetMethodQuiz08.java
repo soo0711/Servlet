@@ -51,14 +51,33 @@ public class GetMethodQuiz08 extends HttpServlet {
 //			out.print("<br>");
 //		}
 		
+//		Iterator<String> iter = list.iterator();
+//		while(iter.hasNext()) {
+//			String line = iter.next();
+//			if (line.contains(search)){
+//				out.print(line + "<br>");
+//			}
+//		}
+		
+		// 방식 1) - spilt을 검색어 자체로 하면 [강남역 최고 / 소개합니다.] 로 잘린다. (맛집이 중복일시 문제)
+//		Iterator<String> iter = list.iterator();
+//		while (iter.hasNext()) {
+//			String line = iter.next();
+//			if (line.contains(search)) {
+//				String[] words = line.split(search);
+//				out.print(words[0] + "<b>" + search + "</b>" + words[1] + "<br>");
+//			}
+//		}
+		
+		// 방식 2) 
 		Iterator<String> iter = list.iterator();
-		while(iter.hasNext()) {
+		while (iter.hasNext()) {
 			String line = iter.next();
-			if (line.contains(search)){
+			if (line.contains(search)) {
+				line = line.replace(search, "<b>" + search + "</b>");
 				out.print(line + "<br>");
 			}
 		}
-
 		out.print("</body></html>");
 
 	}

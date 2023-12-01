@@ -11,8 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/lesson01/ex03")
 public class GetMethodEx03 extends HttpServlet{
 	
-	// add comment
-	
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		

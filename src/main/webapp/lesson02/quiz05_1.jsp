@@ -19,6 +19,28 @@
 	crossorigin="anonymous"></script>
 </head>
 <body>
-
+	<%
+		int number1 = Integer.parseInt(request.getParameter("number1"));
+		int number2 = Integer.parseInt(request.getParameter("number2"));
+		String select =request.getParameter("select");
+		double result = 0;
+		if (select.equals("+")){
+			result = number1 + number2;
+		} else if (select.equals("-")){
+			result = number1 - number2;
+		} else if (select.equals("*")){
+			result = number1 * number2;
+			select = "X";
+		} else {
+			result = (double) number1 / number2;
+			select = "%";
+		}
+	%>
+	<div class="container">
+		<h1>계산 결과</h1>
+		<span class="display-3"><%=number1 %> <%=select %> <%=number2 %> = </span> 
+		<span class="display-3 text-primary"><%=result %></span>
+	</div>
+	
 </body>
 </html>

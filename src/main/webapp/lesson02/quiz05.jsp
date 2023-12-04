@@ -19,19 +19,19 @@
 	crossorigin="anonymous"></script>
 </head>
 <body>
-	<h1>사칙 연산 계산기</h1>
 	<div class="container">
+	<h1>사칙 연산 계산기</h1>
 		<form method="post" action="/lesson02/quiz05_1.jsp">
 		<div class="form-group d-flex">
 			<input type="text" name="number1" class="form-control col-2">
-			<select name="select" class="col-2">
+			<select name="select" class="col-1 mx-2">
 				<option>+</option>
 				<option>-</option>
 				<option>*</option>
 				<option>/</option>
 			</select>
 			<input type="text" name="number2" class="form-control col-2">
-			<button type="submit" class="btn btn-success">계산하기</button>
+			<button type="submit" class="btn btn-success mx-2">계산하기</button>
 		</div>
 		</form>
 	</div>

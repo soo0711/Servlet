@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>길이 변환</title>
+<title>배탈의 민족</title>
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
 	integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
@@ -19,33 +19,15 @@
 	crossorigin="anonymous"></script>
 </head>
 <body>
-	<%
-
-	%>
-	<%
-	int length = Integer.parseInt(request.getParameter("length"));
-	String[] unitArr = request.getParameterValues("unit");
-	String result = "";
-	if (unitArr != null) {
-		for (String unit : unitArr) {
-			if (unit.equals("inch")) {
-				result += (length * 0.393701) + " in<br>";
-			} else if (unit.equals("yd")) {
-				result += (length * 0.0109361) + " yd<br>";
-			} else if (unit.equals("ft")) {
-				result += (length * 0.0328084) + " ft<br>";
-			} else {
-				result += (length * 0.01) + " m<br>";
-			}
-		}
-	}
-	%>
 	<div class="container">
-		<h1>길이 변환 결과</h1>
-		<h3><%=length%>cm
-		</h3>
-		<hr>
-		<h2><%=result%></h2> 
+		<h1>메뉴 검색</h1>
+		<form method="post" action="/lesson02/quiz07_1.jsp">
+			<div class="form-group d-flex align-items-center">
+				<input type="text" name="menu" class="form-control col-3" placeholder="메뉴를 입력하세요.">
+				<input type="checkbox" name="point" value="check" id="check" class="mx-2"><span>4점 이하 제외</span>
+			</div>
+			<button type="submit" class="btn btn-success">검색</button>
+		</form>
 	</div>
 </body>
 </html>

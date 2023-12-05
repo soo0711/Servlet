@@ -1,10 +1,11 @@
+<%@page import="java.util.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>길이 변환</title>
+<title>장보기 목록</title>
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
 	integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
@@ -19,33 +20,35 @@
 	crossorigin="anonymous"></script>
 </head>
 <body>
-	<%
-
-	%>
-	<%
-	int length = Integer.parseInt(request.getParameter("length"));
-	String[] unitArr = request.getParameterValues("unit");
-	String result = "";
-	if (unitArr != null) {
-		for (String unit : unitArr) {
-			if (unit.equals("inch")) {
-				result += (length * 0.393701) + " in<br>";
-			} else if (unit.equals("yd")) {
-				result += (length * 0.0109361) + " yd<br>";
-			} else if (unit.equals("ft")) {
-				result += (length * 0.0328084) + " ft<br>";
-			} else {
-				result += (length * 0.01) + " m<br>";
-			}
-		}
-	}
-	%>
 	<div class="container">
-		<h1>길이 변환 결과</h1>
-		<h3><%=length%>cm
-		</h3>
-		<hr>
-		<h2><%=result%></h2> 
+		<div class="form-group d-flex justify-content-center">
+			<h1>장보기 목록</h1>
+		</div>
+		<div class="form-group">
+			<table class="table text-center">
+				<thead>
+					<tr>
+						<th>번호</th>
+						<th>품목</th>
+					</tr>
+				</thead>
+				<tbody>
+					<%
+					List<String> goodsList = Arrays.asList(new String[]{ 
+						    "저지방 우유", "요플레 4개", "딸기 1팩", "삼겹살 300g", "생수 6개", "주방 세제"
+						});
+					for (int i = 0; i < goodsList.size(); i++){
+					%>
+					<tr>
+						<td><%= i + 1 %></td>
+						<td><%= goodsList.get(i) %></td>
+					</tr>
+					<%
+					}
+					%>
+				</tbody>
+			</table>
+		</div>
 	</div>
 </body>
 </html>

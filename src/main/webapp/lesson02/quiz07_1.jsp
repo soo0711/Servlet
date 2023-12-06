@@ -48,18 +48,21 @@
 			
 		    String menu = request.getParameter("menu"); // 검색어
 			String point = request.getParameter("point"); // 별점 4점 이하 체크
+			boolean exclude = point != null;
 			
 			for (int i = 0; i < list.size(); i++){
 				if (list.get(i).get("menu").equals(menu)){	
-					Double number = (Double)list.get(i).get("point");
-					if (point != null && number < 4.0){
-						continue;
+					// skip 조건: 체크가 되어있고 스킵 되어야 하는 조건이며 continue로 넘김
+					if (exclude && (Double)list.get(i).get("point") < 4.0){
+						// String to  숫자 -> Integer.parseInt(), valueOf()...
+						// Object to new type -> 캐스팅을 명시적으로 해줘야 한다. (Integer), (Double) ...
+						continue; // 아래 코드 수행하지 않고 넘김
 					} 
 			%>
 			<tr> 
 				<td><%=menu %></td>
 				<td><%=list.get(i).get("name") %></td>
-				<td><%=number %></td>
+				<td><%=list.get(i).get("point") %></td>
 			</tr>
 			<%
 				} 

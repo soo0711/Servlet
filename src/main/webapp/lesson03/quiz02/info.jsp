@@ -1,9 +1,9 @@
 <%@page import="java.util.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-			<section class="content1 bg-warning">
+			<section class="content1">
 				<h4>곡 정보</h4>
-				<div class="d-flex py-3 border border-success"> 
+				<div class="d-flex py-3 border border-success p-3 mb-3"> 
 					<%
 						// 아이유 노래 리스트 
 						List<Map<String, Object>> musicList = new ArrayList<>();
@@ -77,22 +77,46 @@
 						musicInfo.put("lyricist", "아이유");
 						musicList.add(musicInfo);
 						
-						String title = "삐삐";
+						String search = request.getParameter("search");
+						String title = request.getParameter("title");
 						for (Map<String, Object> list : musicList) {
-							if (title.equals(list.get("title"))){
+							if ((search == null && title.equals(list.get("title"))) || (title == null && search.equals(list.get("title")))){
+								int hour = (int)list.get("time") / 60;
+								int min = (int)list.get("time") % 60;
 					%>
-					<img src="<%=list.get("thumbnail") %>" width=200 alt="아이유" class="mx-3">
+					<div class="mr-4">
+						<img src="<%=list.get("thumbnail") %>" width=200 alt="아이유">
+					</div>
 					<div>
 						<span class="display-4"><%=list.get("title") %></span>
-						<h5><%=list.get("lyricist") %></h5>
-						<h5><%=list.get("composer") %></h5>
+						<div class="mt-2 text-success font-weight-bold"><%=list.get("singer") %></div>
+						<div class="mt-3 d-flex justify-content-between">
+							<div>앨범</div>
+							<div><%=list.get("title") %></div>
+						</div>
+						<div class="d-flex justify-content-between">
+							<div>재생시간</div>
+							<div><%=hour %>:<%=min %></div>
+						</div>
+						<div class="d-flex justify-content-between">
+							<div>작곡가</div>
+							<div><%=list.get("composer") %></div>
+						</div>
+						<div class="d-flex justify-content-between">
+							<div>작사가</div>
+							<div><%=list.get("lyricist") %></div>
+						</div>
 					</div>
 					<%
+								break;
 							}
 						}
 					%>
 				</div>
 			</section>
-			<section class="content2 bg-primary">
+			<section class="content2">
 				<h4>가사</h4>
+				<div class="border border-left-0 border-right-0 border-secondary">
+					<div class="mt-3 mb-5">가사 정보 없음</div>
+				</div>
 			</section>

@@ -85,8 +85,8 @@
 <div class="d-flex border border-success p-3 mb-3">
 	<div class="mr-4">
 		<img
-			src="http://image.genie.co.kr/Y/IMAGE/IMG_ALBUM/081/867/444/81867444_1616662460652_1_600x600.JPG"
-			alt="가수이미지" width="150">
+			src="<%= artistInfo.get("photo") %>"
+			alt="가수 이미지" width="150">
 	</div>
 	<div>
 		<h3><%= artistInfo.get("name") %></h3>
@@ -111,7 +111,7 @@
 		%>
 		<tr>
 			<td><%=music.get("id")%></td>
-			<td><a href="/lesson03/quiz02/list_layout.jsp?title=<%=music.get("title")%>"><%=music.get("title")%></a></td>
+			<td><a href="/lesson03/quiz02/list_layout.jsp?id=<%=music.get("id")%>"><%=music.get("title")%></a></td>
 			<td><%=music.get("album")%></td>
 		</tr>
 		<%

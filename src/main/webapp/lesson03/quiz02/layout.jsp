@@ -23,6 +23,9 @@
 	.contents {min-height: 500px;}
 	footer {height: 80px;}
 	.nav-text {color: black; font-weight: bold;}
+	
+	.music-info {font-size: 10px; color: #999;}
+	
 </style>
 </head>
 <body>

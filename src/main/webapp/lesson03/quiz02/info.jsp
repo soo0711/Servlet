@@ -77,41 +77,53 @@
 						musicInfo.put("lyricist", "아이유");
 						musicList.add(musicInfo);
 						
-						String search = request.getParameter("search");
-						String title = request.getParameter("title");
-						for (Map<String, Object> list : musicList) {
-							if ((search == null && title.equals(list.get("title"))) || (title == null && search.equals(list.get("title")))){
-								int hour = (int)list.get("time") / 60;
-								int min = (int)list.get("time") % 60;
-					%>
-					<div class="mr-4">
-						<img src="<%=list.get("thumbnail") %>" width=200 alt="아이유">
-					</div>
-					<div>
-						<span class="display-4"><%=list.get("title") %></span>
-						<div class="mt-2 text-success font-weight-bold"><%=list.get("singer") %></div>
-						<div class="mt-3 d-flex justify-content-between">
-							<div>앨범</div>
-							<div><%=list.get("title") %></div>
-						</div>
-						<div class="d-flex justify-content-between">
-							<div>재생시간</div>
-							<div><%=hour %>:<%=min %></div>
-						</div>
-						<div class="d-flex justify-content-between">
-							<div>작곡가</div>
-							<div><%=list.get("composer") %></div>
-						</div>
-						<div class="d-flex justify-content-between">
-							<div>작사가</div>
-							<div><%=list.get("lyricist") %></div>
-						</div>
-					</div>
-					<%
-								break;
+						Map<String, Object> target = null;
+						
+						if (request.getParameter("id") != null){			
+							// 1. 목록에서 클릭한 경우(id 값)
+							int id = Integer.parseInt(request.getParameter("id"));
+							
+							for (Map<String, Object> list : musicList) {
+								if (id == (int)list.get("id")){
+									target = list;
+									break;
+								}
 							}
 						}
+						
+						// 2. 상단에서 폼태그로 검색한 경우 (search 값)
+						if (request.getParameter("search") != null) {
+							String search = request.getParameter("search");
+							for (Map<String, Object> list : musicList) {
+								if (search.equals(list.get("title"))){
+									target = list;
+									break;
+								}
+							}
+						}
+						
 					%>
+					<div class="mr-4">
+						<img src="<%=target.get("thumbnail") %>" width=150 alt="가수 이미지">
+					</div>
+					<div>
+						<div class="display-4"><%=target.get("title") %></div>
+						<div class="mt-2 text-success font-weight-bold"><%=target.get("singer") %></div>
+						<div class="d-flex music-info mt-2">
+							<div class="mr-3">
+								<div>앨범</div>
+								<div>재생시간</div>
+								<div>작곡가</div>
+								<div>작사가</div>
+							</div>
+							<div>
+								<div><%=target.get("title") %></div>
+								<div><%=(int)target.get("time")/60 %>:<%=(int)target.get("time")%60 %></div>
+								<div><%=target.get("composer") %></div>
+								<div><%=target.get("lyricist") %></div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</section>
 			<section class="content2">

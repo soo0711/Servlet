@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Quiz02_1 insert</title>
+<title>즐겨찾기 추가</title>
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
 	integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
@@ -21,7 +21,7 @@
 <body>
 	<div id="wrap" class="container">
 		<h1>즐겨찾기 추가</h1>
-		<form method="get" action="/lesson04/quiz02">
+		<form method="post" action="/lesson04/quiz02">
 			<label for="name">사이트명:</label>
 			<input type="text" class="form-control col-3 mb-2" name="name">
 			<label for="url">사이트 주소:</label>
